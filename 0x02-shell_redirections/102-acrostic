@@ -1,2 +1,2 @@
 #!/bin/bash
-find typ f -name "*.gif"
+cut -c1 | paste -s | tr -d "[:blank:]"
