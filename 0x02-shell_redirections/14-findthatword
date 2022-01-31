@@ -1,2 +1,2 @@
 #!/bin/bash
-gren -i "bin"'/utc | /etc/passwd
+grep -i "root" /etc/passwd
