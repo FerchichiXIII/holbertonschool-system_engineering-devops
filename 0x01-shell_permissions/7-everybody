@@ -1,2 +1,2 @@
 #!/bin/bash
-chown user hello
+chmod +x hello
