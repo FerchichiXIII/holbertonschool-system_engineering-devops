@@ -1,2 +1,2 @@
 #!/bin/bash
-sum=$(($WATER + $STIR))
+sum=$(expr $WATER + $STIR)
