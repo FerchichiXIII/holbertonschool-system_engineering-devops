@@ -1,0 +1,2 @@
+#!/bin/bash
+(str_rot13(base64_decode))
