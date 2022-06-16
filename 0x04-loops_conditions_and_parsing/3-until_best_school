@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times.
 
-i=1
-until [ $i -le 10 ]
+i=10
+until [ $i -le 1 ]
 do
 	echo "Best School"
-	((i++))
+	((i--))
 done
