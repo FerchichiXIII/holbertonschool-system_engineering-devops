@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times.
+# Write a Bash script that displays Best School 10 times, but for the 9th iteration, displays Best School and then Hi
 
 i=10
 until [ $i -le 0 ]
