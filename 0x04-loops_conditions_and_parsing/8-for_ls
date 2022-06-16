@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # displays: The content of the current directory || n a list format || Where only the part of the name after the first dash is displayed
 
-for file in in *
+for file in *
 do
-	echo "$file" | cut -d '-' -f 2
+	echo "$file" | cut -d '-' -f2
 done
