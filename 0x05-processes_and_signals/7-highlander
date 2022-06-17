@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 #displays:To infinity and beyond indefinitelyWith a sleep 2 in between each iterationI am invincible!!! when receiving a SIGTERM signal
 
-trap "echo 'I am invincible!!! when receiving a SIGTERM signal'" SIGTERM
-while :;
-do
-	echo "To infinity and beyond"
-	sleep 2
-done
+trap "echo 'I am invincible!!!'" SIGTERM
+while :; do echo "To infinity and beyond"; sleep 2; done
