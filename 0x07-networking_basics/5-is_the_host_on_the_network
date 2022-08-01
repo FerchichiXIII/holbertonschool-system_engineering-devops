@@ -5,3 +5,4 @@ if ["$1" == "" ]; then
 else
 	ping -c 5 "$1"
 fi
+0gi
