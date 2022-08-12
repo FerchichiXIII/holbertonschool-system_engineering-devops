@@ -1,5 +1,5 @@
 # create a file in /tmp.
-file { '/tmp/file':
+file { '/tmp/scool':
   ensure  => file,
   content => 'I love Puppet',
   owner   => 'www-data',
