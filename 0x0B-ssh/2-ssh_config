@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ssh config file
 
-host 98.98.98.98
+host 54.208.7.147
 identityfile ~/.ssh/school
 batchmode yes
-usr ubuntu
+user ubuntu
 port 22
