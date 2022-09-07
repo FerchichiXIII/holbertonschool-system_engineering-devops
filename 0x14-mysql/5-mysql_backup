@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# mysql compress
+mysqldump -u root -pGhost --all-databases | gzip > /backup/mysql_backup/mysql_backup_$(date +%Y%m%d).sql.gz
