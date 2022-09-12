@@ -5,23 +5,24 @@ returns information about his/her TODO list progress.
 """
 
 import requests
-import urllib
+from sys import argv
 
 
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/todos'
-    user_id = '1'
-    user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
-    user = requests.get(user_url).json()
-    user_name = user.json().get('name')
-    todos = requests.get(url, params={'userId': user_id}).json()
-    total_tasks = len(todos)
-    completed_tasks = 0
-    for task in todos:
-        if task.get('completed'):
-            completed_tasks += 1
-    print('Employee {} is done with tasks({}/{}):'.format(user_name,
-          completed_tasks, total_tasks))
-    for task in todos:
-        if task.get('completed'):
-            print('\t {}'.format(task.get('title')))
+
+    user_id = argv[1]
+    user = requests.get("https://jsonplaceholder.typicode.com/todos/users/{}".format(user_id))
+    name = user.json().get('name')
+    todos = requests.get("https://jsonplaceholder.typicode.com/todos")
+    total_tasks = 0
+    completed = 0
+
+    for task in todos.json():
+        if task.get('user_id') == int(user_id):
+            completed =+ 1
+    
+    print('Employee {} is done with task({}/{}):'
+                    .format(name, completed, total_tasks))
+    
+    print('\n'.join(["\t " + task.get("title") for task in todos.json()
+        if task.get("user_id") == int(user_id) and task.get("completed")]))
