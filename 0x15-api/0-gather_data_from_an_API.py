@@ -13,7 +13,7 @@ if __name__ == "__main__":
     user_id = '1'
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
     user = requests.get(user_url).json()
-    user_name = user.get('name')
+    user_name = user.json().get('name')
     todos = requests.get(url, params={'userId': user_id}).json()
     total_tasks = len(todos)
     completed_tasks = 0
