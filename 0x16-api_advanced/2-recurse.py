@@ -18,7 +18,7 @@ def recurse(subreddit, hot_list=[]):
                        params={'after': after, 'count': count},
                        headers={'User-Agent': 'My User Agent 1.0'},
                        allow_redirects=False)
-    if sub.status_code >= 200:
+    if sub.status_code >= 400:
         return None
     hot = hot_list + [child.get('data').get('title')
                       for child in sub.json().get('data').get('children')]
