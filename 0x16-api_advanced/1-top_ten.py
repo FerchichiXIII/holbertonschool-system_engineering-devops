@@ -8,15 +8,15 @@ import requests
 
 
 def top_ten(subreddit):
-	"""
-	top ten
-	"""
-	url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-	headers = {'User-Agent': 'My User Agent 1.0'}
-	response = requests.get(url, headers=headers, allow_redirects=False)
-	if response.status_code == 200:
-		for i in range(10):
-			print(response.json().get('data').get('children')[i].get('data')
-				  .get('title'))
-	else:
-		print(None)
+    """
+    top ten
+    """
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    headers = {'User-Agent': 'My User Agent 1.0'}
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 200:
+        for i in range(10):
+            print(response.json().get('data').get('children')[i].get('data')
+                  .get('title'))
+    else:
+        print(None)
