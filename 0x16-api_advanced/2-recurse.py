@@ -7,10 +7,12 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None, count=0):
+def recurse(subreddit, hot_list=[]):
     """
     recurse
     """
+    after = None
+    count = 0
     sub = requests.get('https://www.reddit.com/r/{}/hot.json?limit=100'
                        .format(subreddit),
                        params={'after': after, 'count': count},
