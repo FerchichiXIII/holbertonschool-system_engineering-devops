@@ -7,20 +7,28 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None, count=0):
+def recurse(subreddit, hot_list=[], after=""):
     """
     recurse
     """
-    sub = requests.get('https://www.reddit.com/r/{}/hot.json?limit=100'
-                       .format(subreddit),
-                       params={'after': after, 'count': count},
-                       headers={'User-Agent': 'My User Agent 1.0'},
-                       allow_redirects=False)
-    if sub.status_code >= 200:
+    if not subreddit:
         return None
-    hot = hot_list + [child.get('data').get('title')
-                      for child in sub.json().get('data').get('children')]
-    info = sub.json()
-    if not info.get('data').get('after'):
-        return hot
-    return recurse(subreddit, hot, info.get("data").get("after"))
+    url = "https://www.reddit.com"
+    endpoint = "/r/{}/hot.json?limit=100&after={}".format(subreddit, after)
+
+    request = requests.get("{}{}".format(url, endpoint),
+                           headers={'User-agent': 'Mozilla/5.0'},
+                           allow_redirects=False)
+
+    if request.status_code == 200:
+        children = request.json().get('data').get('children')
+        after = request.json().get('data').get('after')
+
+        for elem in children:
+            hot_list.append(elem.get('data').get('title'))
+
+        if after is not None:
+            recurse(subreddit, hot_list, after)
+        return hot_list
+
+    return None
